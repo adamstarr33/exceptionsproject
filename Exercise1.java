@@ -5,7 +5,7 @@
 	- PROMPT THE USER FOR A FILENAME AND USE TRY CATCH TO RE-PROMPT
 	- IF INPUT IS NOT AN INT YOU MUST CLERA THE BUFFER BECUASE THAT BOGUS STRING IS STILL IN THERE 
 	- ONCE OUT OF THE LOOP JUST DO THE CODE THAT PRINTS THE TOKENS FROM THE FILE.
-
+*/
 	
 import java.io.*;
 import java.util.*;
@@ -20,9 +20,24 @@ public class Exercise1
 		}
 		
 		// MODIFY, REPLACE, ADD LOOP CODE, ADD TRY CATCH BLOCK(S) AS NEEDED BELOW
-		
-		Scanner infile = new Scanner( new File( args[0] ) );
-
+		Scanner infile = null;
+		boolean fileReal;
+		String fileName = args[0];
+		do
+		{
+			try
+			{
+				fileReal = true;
+				infile = new Scanner(new File(fileName));
+			}
+			catch(FileNotFoundException e)
+			{
+				System.out.print(fileName + " not found. Enter valid filename: ");
+				Scanner input = new Scanner(System.in);
+				fileName = input.next();
+				fileReal = false;
+			}
+		}while(fileReal==false);
 
 
 
